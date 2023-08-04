@@ -14,6 +14,12 @@ class TravelResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'number_of_days' => $this->number_of_days,
+            'numberOfNights' => $this->number_of_nights,
+        ];
     }
 }
