@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TravelRequest;
 use App\Http\Resources\TravelResource;
 use App\Models\Travel;
 use Illuminate\Http\JsonResponse;
@@ -15,6 +16,17 @@ class TravelController extends Controller
         $travels = Travel::where('is_public',1)->paginate();
         
         return TravelResource::collection($travels);
+    }
+    public function store (TravelRequest $request){
+
+        $newTravel['name'] = $request->name;
+        $newTravel['is_public'] = $request->is_public;
+        $newTravel['description'] = $request->description;
+        $newTravel['number_of_days'] = $request->number_of_days;
+
+        $newTravel1 = Travel::create($newTravel);
+
+        return TravelResource::collection($newTravel1);
     }
 
    
