@@ -28,6 +28,8 @@ class TravelController extends Controller
 
         return TravelResource::collection($newTravel1);
     }
-
+    public function update(TravelRequest $request){
+        
+    }
    
 }

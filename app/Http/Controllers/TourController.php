@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TourListRequest;
+use App\Http\Requests\TourRequest;
 use App\Http\Resources\TourResource;
 use App\Models\Travel;
 use Illuminate\Http\Request;
@@ -33,5 +34,9 @@ class TourController extends Controller
     
        
        return TourResource::collection($tours);
+    }
+    public function store(Travel $travel,TourRequest $request){
+        $tour = $travel->tours()->create($request->validated());
+        return response()->json($tour);
     }
 }
