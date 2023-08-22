@@ -23,6 +23,9 @@ Route::prefix('admin')->middleware(['auth:sanctum','role:admin'])->group(functio
     Route::post('/travels',[TravelController::class,'store']);
     Route::post('/travels/{travel}/tours',[TourController::class,'store']);
 });
+Route::prefix('editor')->middleware(['auth:sanctum','role:editor'])->group(function () {
+    Route::put('/travels/{travel}',[TravelController::class,'update']);
+});
 
 Route::post('/login',LoginController::class);
 
