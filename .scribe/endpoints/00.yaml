@@ -1,0 +1,407 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/travels
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of public travels'
+      description: 'Gets all Public travels'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page_size:
+        name: page_size
+        description: 'Size per page. Default is 15.'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    cleanQueryParameters:
+      page_size: 10
+      page: 1
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":"99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef","name":"Sample Travel","description":"This is a sample travel description.","number_of_days":5,"numberOfNights":4},{"id":"99cf6d66-7712-49b7-946f-d3144ebf35b3","name":"Adventure Vacation","description":"Experience thrilling adventures around the world.","number_of_days":10,"numberOfNights":9},{"id":"99cf6d8e-521e-4d3e-a8a4-a699eb5bd06d","name":"Relaxation Retreat","description":"Unwind and relax in serene and beautiful destinations.","number_of_days":7,"numberOfNights":6},{"id":"99e12ce7-f990-4ba0-a02a-afb296798730","name":"Dubai","description":"Awesome experience","number_of_days":5,"numberOfNights":4},{"id":"99f3475d-fef3-4cc3-b0d8-0e0c4cf76aef","name":"Around Spain","description":"A tour around La Roja!!","number_of_days":5,"numberOfNights":4}],"links":{"first":"http:\/\/localhost\/api\/travels?page=1","last":"http:\/\/localhost\/api\/travels?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/travels?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/travels","per_page":15,"to":5,"total":5}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/travels/{travel_slug}/tours'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the tours of a travel.'
+      description: |-
+        Gets the tours of a specific travel by the slug of the travel.
+        The user can also filter based on the price and date.
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_slug:
+        name: travel_slug
+        description: 'The slug of the travel.'
+        required: false
+        example: around-spain
+        type: string
+        custom: []
+    cleanUrlParameters:
+      travel_slug: around-spain
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      priceFrom:
+        name: priceFrom
+        description: ''
+        required: false
+        example: 190801818.97865
+        type: number
+        custom: []
+      priceTo:
+        name: priceTo
+        description: ''
+        required: false
+        example: 2238.7295
+        type: number
+        custom: []
+      dateFrom:
+        name: dateFrom
+        description: 'Must be a valid date.'
+        required: false
+        example: '2023-08-24T18:37:17'
+        type: string
+        custom: []
+      dateTo:
+        name: dateTo
+        description: 'Must be a valid date.'
+        required: false
+        example: '2023-08-24T18:37:17'
+        type: string
+        custom: []
+      sort:
+        name: sort
+        description: 'Must be one of <code>price</code>.'
+        required: false
+        example: price
+        type: string
+        custom: []
+      sortBy:
+        name: sortBy
+        description: 'Must be one of <code>asc</code> or <code>dsc</code>.'
+        required: false
+        example: asc
+        type: string
+        custom: []
+    cleanBodyParameters:
+      priceFrom: 190801818.97865
+      priceTo: 2238.7295
+      dateFrom: '2023-08-24T18:37:17'
+      dateTo: '2023-08-24T18:37:17'
+      sort: price
+      sortBy: asc
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[],"links":{"first":"http:\/\/localhost\/api\/travels\/around-spain\/tours?page=1","last":"http:\/\/localhost\/api\/travels\/around-spain\/tours?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":null,"last_page":1,"links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/travels\/around-spain\/tours?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"path":"http:\/\/localhost\/api\/travels\/around-spain\/tours","per_page":15,"to":null,"total":0}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/admin/travels
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a travel'
+      description: 'User must be authenticated and an admin in order to create a travel'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      is_public:
+        name: is_public
+        description: 'Wether the travel is public or private.'
+        required: true
+        example: true
+        type: boolean
+        custom: []
+      name:
+        name: name
+        description: 'Name of the travel.'
+        required: true
+        example: 'Around Spain'
+        type: string
+        custom: []
+      description:
+        name: description
+        description: 'Description of the travel.'
+        required: true
+        example: 'This is an awesome travel!'
+        type: string
+        custom: []
+      number_of_days:
+        name: number_of_days
+        description: 'Number of days of the travel.'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      is_public: true
+      name: 'Around Spain'
+      description: 'This is an awesome travel!'
+      number_of_days: 3
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/admin/travels/{travel_id}/tours'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a tour'
+      description: 'User must be authenticated and an admin in order to create a tour'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_id:
+        name: travel_id
+        description: 'The ID of the travel.'
+        required: true
+        example: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+        type: string
+        custom: []
+    cleanUrlParameters:
+      travel_id: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Name of the tour.'
+        required: true
+        example: Madrid
+        type: string
+        custom: []
+      starting_date:
+        name: starting_date
+        description: 'Must be a valid date.'
+        required: true
+        example: '2023-08-24T18:37:17'
+        type: string
+        custom: []
+      ending_date:
+        name: ending_date
+        description: 'Must be a valid date. Must be a date after <code>staring_date</code>.'
+        required: true
+        example: '2118-02-22'
+        type: string
+        custom: []
+      price:
+        name: price
+        description: ''
+        required: true
+        example: 5595.27
+        type: number
+        custom: []
+    cleanBodyParameters:
+      name: Madrid
+      starting_date: '2023-08-24T18:37:17'
+      ending_date: '2118-02-22'
+      price: 5595.27
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/editor/travels/{travel_id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update a travel'
+      description: 'User must be authenticated and an editor in order to update a travel'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      travel_id:
+        name: travel_id
+        description: 'The ID of the travel.'
+        required: true
+        example: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+        type: string
+        custom: []
+    cleanUrlParameters:
+      travel_id: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      is_public:
+        name: is_public
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: inventore
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: ducimus
+        type: string
+        custom: []
+      number_of_days:
+        name: number_of_days
+        description: ''
+        required: true
+        example: 4
+        type: integer
+        custom: []
+    cleanBodyParameters:
+      is_public: false
+      name: inventore
+      description: ducimus
+      number_of_days: 4
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'User login'
+      description: 'A user has an email and a password'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: nyundt@example.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: '~\=.3"lQ['
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: nyundt@example.com
+      password: '~\=.3"lQ['
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -1,0 +1,544 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/travels:
+    get:
+      summary: 'Display a listing of public travels'
+      operationId: displayAListingOfPublicTravels
+      description: 'Gets all Public travels'
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Default is 15.'
+          example: 10
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Default is 15.'
+            example: 10
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+                      name: 'Sample Travel'
+                      description: 'This is a sample travel description.'
+                      number_of_days: 5
+                      numberOfNights: 4
+                    -
+                      id: 99cf6d66-7712-49b7-946f-d3144ebf35b3
+                      name: 'Adventure Vacation'
+                      description: 'Experience thrilling adventures around the world.'
+                      number_of_days: 10
+                      numberOfNights: 9
+                    -
+                      id: 99cf6d8e-521e-4d3e-a8a4-a699eb5bd06d
+                      name: 'Relaxation Retreat'
+                      description: 'Unwind and relax in serene and beautiful destinations.'
+                      number_of_days: 7
+                      numberOfNights: 6
+                    -
+                      id: 99e12ce7-f990-4ba0-a02a-afb296798730
+                      name: Dubai
+                      description: 'Awesome experience'
+                      number_of_days: 5
+                      numberOfNights: 4
+                    -
+                      id: 99f3475d-fef3-4cc3-b0d8-0e0c4cf76aef
+                      name: 'Around Spain'
+                      description: 'A tour around La Roja!!'
+                      number_of_days: 5
+                      numberOfNights: 4
+                  links:
+                    first: 'http://localhost/api/travels?page=1'
+                    last: 'http://localhost/api/travels?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/travels?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/travels'
+                    per_page: 15
+                    to: 5
+                    total: 5
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+                        name: 'Sample Travel'
+                        description: 'This is a sample travel description.'
+                        number_of_days: 5
+                        numberOfNights: 4
+                      -
+                        id: 99cf6d66-7712-49b7-946f-d3144ebf35b3
+                        name: 'Adventure Vacation'
+                        description: 'Experience thrilling adventures around the world.'
+                        number_of_days: 10
+                        numberOfNights: 9
+                      -
+                        id: 99cf6d8e-521e-4d3e-a8a4-a699eb5bd06d
+                        name: 'Relaxation Retreat'
+                        description: 'Unwind and relax in serene and beautiful destinations.'
+                        number_of_days: 7
+                        numberOfNights: 6
+                      -
+                        id: 99e12ce7-f990-4ba0-a02a-afb296798730
+                        name: Dubai
+                        description: 'Awesome experience'
+                        number_of_days: 5
+                        numberOfNights: 4
+                      -
+                        id: 99f3475d-fef3-4cc3-b0d8-0e0c4cf76aef
+                        name: 'Around Spain'
+                        description: 'A tour around La Roja!!'
+                        number_of_days: 5
+                        numberOfNights: 4
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+                        name:
+                          type: string
+                          example: 'Sample Travel'
+                        description:
+                          type: string
+                          example: 'This is a sample travel description.'
+                        number_of_days:
+                          type: integer
+                          example: 5
+                        numberOfNights:
+                          type: integer
+                          example: 4
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost/api/travels?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost/api/travels?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost/api/travels?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost/api/travels'
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: integer
+                        example: 5
+                      total:
+                        type: integer
+                        example: 5
+      tags:
+        - Endpoints
+      security: []
+  '/api/travels/{travel_slug}/tours':
+    get:
+      summary: 'Display a listing of the tours of a travel.'
+      operationId: displayAListingOfTheToursOfATravel
+      description: "Gets the tours of a specific travel by the slug of the travel.\nThe user can also filter based on the price and date."
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  links:
+                    first: 'http://localhost/api/travels/around-spain/tours?page=1'
+                    last: 'http://localhost/api/travels/around-spain/tours?page=1'
+                    prev: null
+                    next: null
+                  meta:
+                    current_page: 1
+                    from: null
+                    last_page: 1
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/travels/around-spain/tours?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/travels/around-spain/tours'
+                    per_page: 15
+                    to: null
+                    total: 0
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost/api/travels/around-spain/tours?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost/api/travels/around-spain/tours?page=1'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: string
+                        example: null
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost/api/travels/around-spain/tours?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: null
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost/api/travels/around-spain/tours'
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: string
+                        example: null
+                      total:
+                        type: integer
+                        example: 0
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                priceFrom:
+                  type: number
+                  description: ''
+                  example: 190801818.97865
+                priceTo:
+                  type: number
+                  description: ''
+                  example: 2238.7295
+                dateFrom:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-08-24T18:37:17'
+                dateTo:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-08-24T18:37:17'
+                sort:
+                  type: string
+                  description: 'Must be one of <code>price</code>.'
+                  example: price
+                sortBy:
+                  type: string
+                  description: 'Must be one of <code>asc</code> or <code>dsc</code>.'
+                  example: asc
+      security: []
+    parameters:
+      -
+        in: path
+        name: travel_slug
+        description: 'Optional parameter. The slug of the travel.'
+        required: true
+        schema:
+          type: string
+        examples:
+          omitted:
+            summary: 'When the value is omitted'
+            value: ''
+          present:
+            summary: 'When the value is present'
+            value: around-spain
+  /api/admin/travels:
+    post:
+      summary: 'Create a travel'
+      operationId: createATravel
+      description: 'User must be authenticated and an admin in order to create a travel'
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_public:
+                  type: boolean
+                  description: 'Wether the travel is public or private.'
+                  example: true
+                name:
+                  type: string
+                  description: 'Name of the travel.'
+                  example: 'Around Spain'
+                description:
+                  type: string
+                  description: 'Description of the travel.'
+                  example: 'This is an awesome travel!'
+                number_of_days:
+                  type: integer
+                  description: 'Number of days of the travel.'
+                  example: 3
+              required:
+                - is_public
+                - name
+                - description
+                - number_of_days
+      security: []
+  '/api/admin/travels/{travel_id}/tours':
+    post:
+      summary: 'Create a tour'
+      operationId: createATour
+      description: 'User must be authenticated and an admin in order to create a tour'
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the tour.'
+                  example: Madrid
+                starting_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2023-08-24T18:37:17'
+                ending_date:
+                  type: string
+                  description: 'Must be a valid date. Must be a date after <code>staring_date</code>.'
+                  example: '2118-02-22'
+                price:
+                  type: number
+                  description: ''
+                  example: 5595.27
+              required:
+                - name
+                - starting_date
+                - ending_date
+                - price
+      security: []
+    parameters:
+      -
+        in: path
+        name: travel_id
+        description: 'The ID of the travel.'
+        example: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+        required: true
+        schema:
+          type: string
+  '/api/editor/travels/{travel_id}':
+    put:
+      summary: 'Update a travel'
+      operationId: updateATravel
+      description: 'User must be authenticated and an editor in order to update a travel'
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_public:
+                  type: boolean
+                  description: ''
+                  example: false
+                name:
+                  type: string
+                  description: ''
+                  example: inventore
+                description:
+                  type: string
+                  description: ''
+                  example: ducimus
+                number_of_days:
+                  type: integer
+                  description: ''
+                  example: 4
+              required:
+                - name
+                - description
+                - number_of_days
+      security: []
+    parameters:
+      -
+        in: path
+        name: travel_id
+        description: 'The ID of the travel.'
+        example: 99cf6cf1-81a3-4165-b4d3-d42f87e7e5ef
+        required: true
+        schema:
+          type: string
+  /api/login:
+    post:
+      summary: 'User login'
+      operationId: userLogin
+      description: 'A user has an email and a password'
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: nyundt@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: '~\=.3"lQ['
+              required:
+                - email
+                - password
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

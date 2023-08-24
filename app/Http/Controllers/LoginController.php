@@ -11,7 +11,9 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * User login
+     * 
+     * A user has an email and a password
      */
     public function __invoke(LoginRequest $request)
     {
